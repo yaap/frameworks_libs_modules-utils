@@ -61,10 +61,27 @@ java_library {
     ],
 }
 
+java_library {
+    name: "aconfig-annotations-lib",
+    srcs: [
+        "com/android/aconfig/annotations/*.java",
+    ],
+    sdk_version: "core_current",
+    host_supported: true,
+    optimize: {
+        proguard_flags_files: ["aconfig_proguard.flags"],
+        export_proguard_flags_files: true,
+    },
+    visibility: [
+        "//visibility:public",
+    ],
+}
+
 filegroup {
     name: "framework-api-annotations",
     srcs: [
         "android/annotation/Discouraged.java",
+        "android/annotation/FlaggedApi.java",
         "android/annotation/SystemApi.java",
         "android/annotation/TestApi.java",
     ],
@@ -99,6 +116,7 @@ filegroup {
     visibility: [
         "//frameworks/libs/modules-utils/java/com/android/modules/utils",
         "//packages/modules/Bluetooth/system/binder",
+        "//packages/modules/Bluetooth/android/app/aidl",
     ],
 }
 
